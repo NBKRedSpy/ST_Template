@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "NBK_RedSpy",
+    "classifications": [ "Common", "Console" ],
+    "identity": "NBK_RedSpy.ST-Template",
+    "name": "Shortest Trip To Earth Mod Template",
+    "shortName": "ST_Template",
+    "sourceName":"ST_Template",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sources": [
+      {"modifiers": [
+        {"exclude": [
+          "**/[Bb]in/**",
+          "**/[Oo]bj/**",
+          ".template.config/**/*",
+          "**/*.filelist",
+          "**/*.user",
+          "**/*.lock.json",
+          "**/.vs/**"
+        ]
+      }
+      ]}
+    ],
+    "symbols": {
+        "UserName": {
+            "type":"parameter",
+            "description": "The user name to use for user specific items like Github name",
+            "replaces": "$UserName$",
+            "datatype": "string",
+            "defaultValue": "",
+            "isRequired": true
+        }
+    }
+  }
