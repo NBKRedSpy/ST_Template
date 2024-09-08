@@ -1,0 +1,8 @@
+"workshopitem"
+{
+	"appid"		"812040"
+	"visibility"		"0"
+	"title"		"ST_Template Title"
+	"previewfile"		"$ProjectDir$/thumbnail.png"
+	"contentfolder"		"$ProjectDir$/"
+}

@@ -1,7 +1,31 @@
 # Shortest Trip To Earth Project Template
 
-A Shortest Trip To Earth dotnet style template to create a new mod.
+A Shortest Trip To Earth `dotnet new` style template to create a new mod.  
 This creates a Shortest Trip To Earth Mod project which already includes BepInEx, Publicizer, game references, and some basic scaffolding.
+
+# Template Note
+
+When compiled in release mode, <project name>.zip will be created.  This zi p contains the mod's install files.
+
+The workshop upload (CreateWorkshop.ps1) is a placeholder only as Shortest Trip To Earth does not support BepInEx/Harmony mods.  The purpose of the placeholder is to let users know that the install can be found on GitHub or NexusMods.com.
+
+# Requirements
+## Requires PowerShell Core
+This template uses PowerShell Core to set the absolute paths in the workshop.vdf file.  The .vdf file spec does not support relative paths.
+
+The install can be found here:
+https://github.com/PowerShell/PowerShell/releases
+
+Alternatively, if winget is installed, use this command:
+ ```winget install --id Microsoft.PowerShell --source winget```
+
+## Requires SteamCmd
+SteamCmd is used to upload the mod to the workshop.
+
+The .exe can be found here:
+https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_SteamCMD
+
+Either copy the steamcmd.exe to the project's root directory, or put it in the system's path.
 
 # Installation
 
@@ -41,13 +65,13 @@ A parameter screen will ask for the UserName, which is the name that will be use
 ## dotnet Command line
 Open a console window to the desired root directory (Ex: c:/src)
 
-type `dotnet new ST_Template -n <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
+type `dotnet new ST_Template o <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
 
-Example: `dotnet new ST_Template -n ST_AmazingMod --UserName NBKRedSpy`
+Example: `dotnet new ST_Template -o ST_AmazingMod --UserName NBKRedSpy`
 
 In the example above, there will now be a ST_AmazingMod folder in the current directory with the new project's files.  
 
-*Important*: If the -n parameter is not provided, the folder and project name will be "template"
+*Important*: If the -o parameter is not provided, the files will be put into the current directory (instead of a sub directory) and the project name will be "template".
 
 # Uninstall
 At a command prompt, type 
@@ -67,49 +91,52 @@ In the example above, type `dotnet new uninstall NBK_RedSpy.ST_Template.Template
 # Folder Structure
 
 ```
-FooProject
+<Project Name>
 │   .gitignore
+│   CreateWorkshop.ps1
 │   LICENSE.md
-│   modmanifest.json   -- QM mod manifest.  
+│   PostTemplateCreate.ps1
 │   README.md
 │   
-├───media  -- folder to place the thumbnail.png
-│       .gitkeep
-└───src -- holds the project's files.
-    │   .gitignore
-    │   ExamplePatch.cs     -- An example Harmony Patch
-    │   FooProject.csproj
-    │   FooProject.sln
-    │   LICENSE.md
-    │   ModConfig.cs        -- Optional Mod config file
-    │   Plugin.cs           -- Bootstrap 
+├───media
+│       thumbnail.png   -- Image used for the Readme and the Steam Workshop image.
+├───package
+├───src
+│   │   .gitattributes
+│   │   .gitignore
+│   │   Example_Patch.cs  --An Example Harmony Path
+│   │   Plugin.cs
+│   │   <Project Name>.csproj
+│   │   <Project Name>.sln
+│   │   
+│   └───Properties
+│           AssemblyInfo.cs
+│           
+└───Workshop
+        workshop.vdf    --The steam workshop file
 ```
 
 To use the project:
 * Make the changes to the files in the src folder.
-* Update the modmanifest.json in the root if necessary.
-* Add a thumbnail.png to the media folder.
-
-* Compile the project
-* In the Shortest Trip To Earth game, invoke the `mod_createworkshopitem` command, with the second parameter being this project's output bin folder.
-    * Get the returned SteamId from that command.
-* In Steam Workshop, subscribe to your mod.
-* In the *.csproj file, set the SteamId entry to the mod's Steam id.  Example:`<SteamId>12345678</SteamId>`
-
-    * From now on, all builds will be copied to the Steam Workshop folder.  Generally located at `<Steam Install Directory>\steamapps\workshop\content\2059170\<Mod's Steam Workshop ID>`
-* Build the project.
-* Remove any Unneeded items.  For example, ModConfig and the reference to the NewtonSoft.Json package.
-* The project's build events (found in the Project's details page) handles copying over the files to the Workshop folder.
-    * If not using ModConfig or Newtonsoft, remove the System.* and Newtonsoft* lines.
+* Overwrite the thumbnail.png to the media folder.
 * Edit the README.md in the root:
     * Remove my Kofi link.
     * Edit as desired.
+* Compile the project in Release Mode
+    * This will create a <project name>.zip file in the root which can be uploaded to Nexus Mods.
 
-Update the mod on Steam:
-* Open the game.
-* Use the console command `mod_updateworkshopitem <Steam Workshop ID> <Workshop Folder> true`, pointing to the mod's Steam Workshop folder.  Example: `mod_updateworkshopitem 1234567 "C:\Program Files\steamapps\workshop\content\2059170\12345678" true`
-* Change the Mod's Steam Workshop page to public.
+# Uploading/Updating Steam Workshop Mod
 
+To upload or update the placeholder mod entry to Steam Workshop, run the CreateWorkshop.ps1 script in PowerShell.
 
+The script will prompt for the username, password, and steam guard code.  It processes and uploads the `workshop/workshop.vdf` file.
+When the mod is first uploaded, the Steam Workshop Id will be added to the `workshop.vdf` file.
 
+When done, update the title and description on the mod's Steam Workshop page.
+
+## Steam and NexusMods Description Tools.
+The following tools can convert the project's README.md to Steam and NexusMod's BBCode formats.
+
+https://github.com/NBKRedSpy/MarkdownToSteam
+https://github.com/NBKRedSpy/MarkdownToNexusMods
 

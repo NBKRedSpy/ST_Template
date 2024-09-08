@@ -2,6 +2,10 @@
 
 ![thumbnail icon](media/thumbnail.png)
 
+# Steam Workshop
+For Steam Users, subscribing to this mod does not install the mod.
+Follow [Installation section](#installation) instructions below to install.
+
 # Compatibility
 * Some mods instruct the user to overwrite the game's original files.  This mod may not be compatible with those mods.
     * This mod does not affect the original game files.
