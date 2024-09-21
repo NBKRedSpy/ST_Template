@@ -35,7 +35,7 @@ If BepInEx has already been installed, skip to the [Mod Install](#mod-install) s
     
     __Important__:  The .zip file *must* be extracted to the root folder of the game.  If BepInEx was extracted correctly, the following directory will exist: ```<Steam Directory>\steamapps\common\Shortest Trip to Earth\BepInEx```.  
 
-    A common issue is extracting the .zip with the .zip name.  Ex: ```BepInEx_win_x64_5.4.23.1/BepInEx```.  If this occurs, move the ```BepInEx``` sub directory to the game's root directory.
+    A common issue is extracting the .zip to a folder with the .zip name.  Ex: ```<Game Directory>/BepInEx_win_x64_5.4.23.1/BepInEx```.  If this occurs, move all of the files and folders in the BepInEx_win_x64_5.4.23.1 folder to the game's root directory.
 
 * Run the game.  Once the main menu is shown, exit the game.  
 * If the install was successful, there will now be a ```<Game Dir>/BepInEx/plugins``` directory.

@@ -1,5 +1,9 @@
-# Changes the current directory to the path that the specified file is located at.
-# Useful for programs that have a "copy file path to clipboard", but not a "directory only" option.
+<#
+.DESCRIPTION 
+    Creates or updates the entry on the Steam Workshop.
+    The first run will create the steam workshop item's id in the .vdf.
+    The subsequent runs will update.
+#>
 param(
     [Parameter(Mandatory)]
     [string] $SteamUserName,
