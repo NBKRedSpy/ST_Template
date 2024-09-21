@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.1.1</PackageVersion>
     <PackageId>NBK_RedSpy.ST_Template.Template</PackageId>
     <Title>Shortest Trip To Earth Template</Title>
     <Authors>NBK_RedSpy</Authors>
