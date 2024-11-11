@@ -65,7 +65,7 @@ A parameter screen will ask for the UserName, which is the name that will be use
 ## dotnet Command line
 Open a console window to the desired root directory (Ex: c:/src)
 
-type `dotnet new ST_Template o <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
+type `dotnet new ST_Template -o <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
 
 Example: `dotnet new ST_Template -o ST_AmazingMod --UserName NBKRedSpy`
 
